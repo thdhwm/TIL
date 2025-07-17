@@ -29,15 +29,15 @@
 
 ## Git ( Revert, Push )
 
-git remote add origin remote_repo_url
+- git remote add origin remote_repo_url
 
 origin → 변경가능 편한 이름으로
 
-remote_repo_url - https://github.com/thdhwm/ssafy.git 내 git 허브 Repo. 주소
+- remote_repo_url - https://github.com/thdhwm/ssafy.git 내 git 허브 Repo. 주소
 
 ### Push
 
-git push origin master
+- git push origin master
 
 origin master 처음 세팅 하면 다음부터 스킵 가능
 
@@ -45,15 +45,15 @@ commit 내역이 없으면 push 불가능
 
 ### Pull, Clone
 
-git pull origin master 
+- git pull origin master 
 
-git clone remote_repo_url
+- git clone remote_repo_url
 
 origin master, remote_repo_url 처음 세팅 하면 다음부터 스킵 가능
 
 변경 사항 만 받아오기 (업데이트)
 
-git clone remote_repo_url
+- git clone remote_repo_url
 
 원격 저장소 전체 복제 (다운로드)
 
@@ -68,3 +68,5 @@ clone된 프로젝트 이미 init 되어 있음
 touch .gitignore 생성
 
 생성된 gitignore에 파일명, 확장자까지로 저장  (ex. a.txt)
+
+gitignore에 있는거는 push 할때 Repo로 안감 (.gitignore 파일은 올라감)
