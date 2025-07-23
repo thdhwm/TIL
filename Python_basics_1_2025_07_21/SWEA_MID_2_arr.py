@@ -4,12 +4,8 @@ for t in range(1, T + 1):
     
     size = int(input())
     arr = []
-    spin_90 = []
-    spin_180 = []
-    spin_270 = []
-    trans_list_90 = []
-    trans_list_180 = []
-    trans_list_270 = []
+    spin_90, spin_180, spin_270 = []
+    trans_list_90, trans_list_180, trans_list_270 = []
 
     for i in range(size):
         
@@ -48,7 +44,15 @@ for t in range(1, T + 1):
         trans_list_270.append(final_product_270[(size * i) : (size * i + size)])
 
 #출력 시작
-print(f'#{t}')
-for i in range(size):
-    print(f'{trans_list_90[i]} {trans_list_180[i]} {trans_list_270[i]}')
-    
+    print(f'#{t}')
+    for i in range(size):
+        print(
+        ''.join(str(num) for num in trans_list_90[i]) + ' ' +
+        ''.join(str(num) for num in trans_list_180[i]) + ' ' +
+        ''.join(str(num) for num in trans_list_270[i])
+    )
+
+
+
+# for i in range(size):
+#     print(f'{trans_list_90[i]} {trans_list_180[i]} {trans_list_270[i]}')
