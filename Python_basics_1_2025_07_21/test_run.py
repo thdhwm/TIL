@@ -1,25 +1,14 @@
-def step1(cm):
+
+for n in range(10):
+
+
+    def even():
+        if n % 2 == 1:
+            return True, n
+        else:
+            return False, n
     
-    if cm >= 140:
-        print('탑승 가능합니다.')
+    if even() == True:
+        print(f'{n}은/는 홀수입니다')
     else:
-        print('탑승 불가입니다.')
-
-def step2(age, cm):
-    if age >= 12 and cm >=140:
-        print('탑승 가능합니다.')
-    else:
-        print('탑승 불가입니다.')
-
-def step3(age, cm, parent):
-    if cm >= 140 and age >= 12:
-        print('탑승 가능 (단독)')
-    elif cm >= 140 and age < 12 and parent == 'y':
-        print('탑승 가능 (보호자 동반)')
-    elif cm >= 140 and age < 12 and parent == 'n':
-        print('혼자서는 탑승 불가')
-    elif cm < 140:
-        print('키 제한으로 탑승 불가')
-
-
-print(step3(12, 150, 'n'))
+        print(f'{n}은/는 짝수입니다')
