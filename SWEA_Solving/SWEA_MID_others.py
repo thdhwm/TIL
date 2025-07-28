@@ -1,3 +1,6 @@
+# 1859. 백만 장자 프로젝트 문제 
+# stack 이였나 heap이였나 그거 쓴다해씀
+
 T = int(input())
 for tc in range(1, T+1):
     N = int(input())
