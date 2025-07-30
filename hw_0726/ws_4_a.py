@@ -1,14 +1,11 @@
 # 아래 함수를 수정하시오.
-def even_elements(lst):
-    result = []
-    while lst:
-        num = lst.pop(0)
-        if num % 2 == 0:
-            result.append(num)
-            
-    return result
+def add_item_to_dict(dictionary, key, value):
+    new_dict = dictionary.copy()
+    new_dict[key] = value
+
+    return new_dict
 
 
-my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-print(even_elements(my_list))
-
+my_dict = {'name': 'Alice', 'age': 25}
+result = add_item_to_dict(my_dict, 'country', 'USA')
+print(result)

@@ -1,72 +1,96 @@
-# List Comprehension
-# 알고리즘 -> 사용자 입력 구현 시 많이 활용
+# 첫 시험 
 
-# 구조
-# li = [표현식 for 변수 in 반복객체 ]
-# li = [표현식 for 변수 in 반복객체 if 조건문]
-
-result1 = [num for num in range(1,11)]      #[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-result2 = [num * 2 for num in range(1,11)]     #[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
-
-# if 예시
-# 1~10 중 짝수만
-
-result3 = [num for num in range(1,11) if num % 2 == 0]      #[2, 4, 6, 8, 10]
+# 객관식 코드 1개 쓰고 출력 결과 뭐 나올까요? a/b/c/d 같은거
 
 
-# 두 리스트의 모든 조합
-colors = ['red', 'blue']
-sizes = ['s', 'm', 'l', 'xl']
-
-result4 = [(color,sizes) for color in colors for size in sizes]
-
-print(result4)
+# 재귀 함수 - 자기 자신을 호출하는 함수  -> 요정도만 해도 정답!
+# 재귀 함수의 필수 구성 요소
+# 1. 시작점, 누적값
+# 2. 종료조건
 
 
-# 사용자 입력 2차원 행렬
-# 1 2 3
-# 4 5 6 
-# 7 8 9
-# [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-# _ : 반복을 돌면서 변수에 저장하고 싶은 값이 없을 때
-result5 = [list(map(int, input().split())) for _ in range(3)]
-print(result5)
+# 재귀함수의 필수 구성 요소
+# 1. 시작점, 누적값
+# 2. 종료조건
+
+# 단축 평가
+# item1 = "지도"
+# item2 = ""
+
+
+# print(item1 and item2) # "" 출력
+# print(item1 or item2)  # "지도" 출력
+# print((item1 and item2) == False) # False
+# print((item1 and item2) == "") # True
+# print("" == False)  # False
+
+# if "": # 조건문에서는 False 로 인식
+#     print("값이 비어있다")
+
+# print(item1 or item2)
+
+
+### for와 while의 차이?
+########################################################################################
+
+
+arr = [2, 4, 6, 8, 10]
+
+# 2 4 6 8 10 8 6 4 2
+
+# 2 4 6 8 10
+def func(idx):
+    if idx == len(arr) - 1:
+        # 종료 조건이 만족했을 때, 수행되어야 할 로직
+        print(arr[idx], end=' ')    
+        return
+    
+    print(arr[idx], end=' ')  # 다음 재귀 호출 전에 뭘 하고 싶은가 ?
+
+    func(idx + 1)  # 다음 재귀 호출에는 어떤 값을 전달해주어야 하는가 ?
+
+    print(arr[idx], end=' ')  # 돌아오면서는 어떤 로직을 수행하고 싶은가 ?
+    
+func(0)
+
+#func(0) -> func(1) -> func(2)
+
+# 십진수 -> 이진수로 변환 (재귀호출)
+# 10 -> 1010
+
+def binary(num):
+    if num < 2:
+        print(num, end='')
+        return
+
+    binary(num // 2)  # 2로 나눈 몫을 전달
+    print(num % 2, end='')
+
+binary(10)
+
+
+
+
+# 역량 테스트 IM ~3주 후
+# IM 난이도 단순, 쉬움
 
 
 
 
 
-# 함수 vs 메서드 - 왜 다름? 둘다 함수 아님?
-
-#클래스 (class)
-
-# 프로그래밍 페러다임(방법론)
-# - 절차지향
-# 절차에 따라 순서대로구현하자 (C언어)
-# - 객체지향
-#  객체 단위로 분리하여 개발을 하자 (JAVA, Python)
 
 
-# 객체지향
-# - 객체지향 프로그래밍( OOP )의 핵심 개념
-
-# 객체?
-# 현실 세계의 사물이나 개념을 코드로 표현한 것
-
-class Smartphone:
-    def __init__(self, model, price):
-        self.model = model
-        self.price = price
-
-    def call(self):
-        print(f'{self.model}에서 전화함')
-# 매직 메서드 : 언더바 2개 ('__')로 감싸져 있는 메서드 -> 파이썬 내부에서 특별한 상황에 자동으로 호출 됨
-# self - 객체 자기 자신을 가리킨다
-
-my_Phone = Smartphone('Note10', '10만원')
-giryunPhone = Smartphone('wide5', '0원')
-
-giryunPhone.call() # 
+# 문자열 활용하는 알고리즘 문제에서 많이 씀
+#  ord('a')  ->   문자에서 아스키 코드로
+#  chr(97)   ->   아스키 코드에서 문자로
 
 
+
+
+#신입들이 ai 관련 무슨 역량이 있었음 좋을까? 물어봤더니
+# 모델 서빙
+# 학습
+# 추론 모델
+# 서비스에 적용
+# 인프라
+# 리눅스, docker, etc.
