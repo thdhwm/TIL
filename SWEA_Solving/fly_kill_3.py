@@ -44,10 +44,11 @@ for t in range(1, T + 1):
             for k in range (1, M):                          # 오른쪽 위 방향
                 if (i - k) in range(N) and (j + k) in range(N):
                     spray_cross += base[i - k][j + k]
+
 ############################################## 아직 안바꿈  #######################
             for k in range (1, M):                        # 오른쪽 아래 방향
                 if (i + k) in range(N):
-                    spray_cross += base[i + k][j]
+                    spray_cross += base[i + k][j + k]
 
             for k in range (1, M):                         # 왼쪽  아래 방향
                 if (j - k) in range(N):
