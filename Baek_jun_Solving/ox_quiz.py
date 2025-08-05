@@ -1,17 +1,26 @@
-T = int(input())
+N, M = map(int, input().split())
+board = [[0]*M for _ in range(N)]
+count_w = 0
+count_b = 0
 
-for t in range(1, T + 1):
-    quiz = list(input())
-    total = 0
-    score = 0
+for i in range(N):
+    board[i] = list(input())
 
-    for i in range(len(quiz)):
-        if quiz[i] == 'O':
-            score += 1
-            total += score                      #O면 스코어 만큼 더하고 스코어 +1
-
+for i in range(N):
+    for j in range(M):
+        if board[i][j] == 'W':
+            count_w += 1
         else:
-            score = 0                      #x면 스코어 초기화
+            count_b += 1
 
-    print(total)    
-    
+# b가 많은거로 가정
+if count_w > count_b:
+    count_w, count_b = count_b, count_w
+
+if count_w < 32:
+    change_color = 32 - count_w
+else:
+    change_color = 0
+
+print(change_color)
+s

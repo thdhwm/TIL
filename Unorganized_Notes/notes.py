@@ -112,3 +112,7 @@ binary(10)
 
 
 
+# 같은 폴더에 input.txt 넣어놓고
+# import sys
+# sys.stdin = open('input.txt')
+# sys.stdout = open('output.txt', 'w')      # 아웃풋 파일 쓰기 모드로
