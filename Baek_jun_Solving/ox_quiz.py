@@ -23,4 +23,3 @@ else:
     change_color = 0
 
 print(change_color)
-s
