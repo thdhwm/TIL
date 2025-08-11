@@ -14,7 +14,7 @@ for t in range(1, T + 1):
             for p in range(i, N):
                 for q in range(j, N):
                     if start == table[p][q]:
-                        area = (p - i + 1) * ( q - j + 1)
+                        area = (p - i + 1) * (q - j + 1)
                     
                         if max_area < area:
                             max_area = area

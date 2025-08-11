@@ -10,7 +10,7 @@ for t in range(1, T + 1):
     total_M1 = 0
     total_M2 = 0
     sorted_blocks = sorted(blocks, reverse = True)
-    print(sorted_blocks)
+
     while block_count < N:   # 5
         if stack_A <= M1:   # 3
             total_M1 += (stack_A) * sorted_blocks[block_count]
