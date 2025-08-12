@@ -1,3 +1,8 @@
-s = ['a', 'b', 'c', 'd']
+# import sys
+# sys.stdin = open('input.txt')
 
-print('a'.join(s))
+arr = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+arr[1: 2] = 100
+
+print(arr)

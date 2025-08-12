@@ -24,4 +24,3 @@ for t in range(1, T + 1):
                 result += str(i)
                 result += ' '
         print(result)
-            
