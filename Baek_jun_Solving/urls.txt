@@ -1,0 +1,37 @@
+삼성 A형 기출 - https://www.acmicpc.net/workbook/view/2771
+
+1. 입문
+https://www.acmicpc.net/workbook/view/22231
+
+2. Greedy
+https://www.acmicpc.net/workbook/view/22232
+
+3. 슬라이딩 윈도우
+https://www.acmicpc.net/workbook/view/22230
+
+4. 스택과 큐
+https://www.acmicpc.net/workbook/view/22296
+
+5. 재귀
+- 재귀 기초 문제들 추가한 문제집
+https://www.acmicpc.net/workbook/view/22416
+
+6. 그래프 기초 문제들
+https://www.acmicpc.net/workbook/view/22617
+
+7. 백트래킹 연습용 N과 M 시리즈
+https://www.acmicpc.net/workbook/view/2052
+
+8. 다이나믹 프로그래밍
+https://www.acmicpc.net/workbook/view/22711
+
+9. 트리
+https://www.acmicpc.net/workbook/view/22737
+
+--------------------------------------------------
+
+10. 시크릿 문제집
+  - 순서대로 풀어볼만한 문제들을 담아놓았습니다.
+  - 꾸준히 풀어보는 걸 추천드립니다.
+
+https://www.acmicpc.net/workbook/view/22403
