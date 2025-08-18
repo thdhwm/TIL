@@ -1,66 +1,43 @@
-T = int(input())
+import sys
+sys.stdin = open('input.txt')
 
+T = int(input())
+di = [-1, 0, 1, 0, -1, 1, 1, -1] # 앞에 4개 + 뒤에 4개 x
+dj = [0, 1, 0, -1, 1, 1, -1, -1]
 for t in range(1, T + 1):
     N, M = map(int, input().split())        # N - 행렬 N*N, M - 스프레이 범위
-    base = [[0] * N for _ in range(N)]                    # 값 넣을 행렬 만듬
+    table = [list(map(int, input().split())) for _ in range(N)]                    # 값 넣을 행렬 만듬
+    max_kills = -1
+
     for i in range(N):
-        base[i] = list(map(int, input().split()))           # 행렬 설정 완료
+        for j in range(N):
+            center = table[i][j]
+            kills_cross = 0    # 십자 범위 킬
+            kills_x = 0    # x 범위 킬
+            for n in range(4):     # + 에 대하여
+                for k in range(1, M):
+                    ni = i + di[n] * k
+                    nj = j + dj[n] * k
+                    if 0 <= ni < N and 0 <= nj < N:
+                        kills_cross += table[ni][nj]
+            
+            for n in range(4, 8):     # x 에 대하여
+                for k in range(1, M):
+                    ni = i + di[n] * k
+                    nj = j + dj[n] * k
+                    if 0 <= ni < N and 0 <= nj < N:
+                        kills_x += table[ni][nj]
 
-###############################  입력 값 받기 끝  ###############################        
-# 십자 모양 뿌릴 때
+            if kills_x < kills_cross:
+                kills_x, kills_cross = kills_cross, kills_x
 
-    genocide = 0
-    
-    for i in range(N):                                     # N * N 행렬에서
-        for j in range(N):                             # 스프레이 중심 (i,j)
-            spray_cross = 0
-            spray_cross += base[i][j]                                # 중심
+            if max_kills < kills_x + center:
+                max_kills = kills_x + center
 
-            for k in range (1, M):                             # 오른쪽 방향
-                if (j + k) in range(N):
-                    spray_cross += base[i][j + k]
+    print(f'#{t} {max_kills}')
 
-            for k in range (1, M):                               # 위쪽 방향
-                if (i + k) in range(N):
-                    spray_cross += base[i + k][j]
 
-            for k in range (1, M):                               # 왼쪽 방향
-                if (j - k) in range(N):
-                    spray_cross += base[i][j - k]
 
-            for k in range (1, M):                             # 아래쪽 방향
-                if (i - k) in range(N):
-                    spray_cross += base[i - k][j]
-
-            if spray_cross > genocide:
-                genocide = spray_cross
-    
-# X 모양 뿌릴 때
-    for i in range(N):                                     # N * N 행렬에서
-        for j in range(N):                             # 스프레이 중심 (i,j)
-            spray_x = 0
-            spray_x += base[i][j]                                    # 중심
-
-            for k in range (1, M):                          # 오른쪽 위 방향
-                if (i - k) in range(N) and (j + k) in range(N):
-                    spray_cross += base[i - k][j + k]
-
-############################################## 아직 안바꿈  #######################
-            for k in range (1, M):                        # 오른쪽 아래 방향
-                if (i + k) in range(N):
-                    spray_cross += base[i + k][j + k]
-
-            for k in range (1, M):                         # 왼쪽  아래 방향
-                if (j - k) in range(N):
-                    spray_cross += base[i][j - k]
-
-            for k in range (1, M):                            # 왼쪽 위 방향
-                if (i - k) in range(N):
-                    spray_cross += base[i - k][j]
-
-            if spray_cross > genocide:
-                genocide = spray_cross    
-    
 
 
 
