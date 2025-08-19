@@ -40,58 +40,7 @@ sys.stdin = open('input.txt')
 #     print(-1)
 # else:
 #     print(total)
-# ####################################################
 
-# paper = [list(map(int, input().split())) for _ in range(10)]
-# used = [0] * 6   # 크기별 색종이 사용 개수
-# answer = float('inf')
-#
-# def can_attach(x, y, size):
-#     """(x,y)에서 size 크기 색종이를 붙일 수 있는지 확인"""
-#     if x + size > 10 or y + size > 10:
-#         return False
-#     for i in range(size):
-#         for j in range(size):
-#             if paper[x+i][y+j] != 1:
-#                 return False
-#     return True
-#
-# def attach(x, y, size, val):
-#     """색종이를 붙였다(0으로 덮기) or 떼기(1로 복구)"""
-#     for i in range(size):
-#         for j in range(size):
-#             paper[x+i][y+j] = val
-#
-# def dfs(pos, cnt):
-#     global answer
-#
-#     # 이미 최소값보다 많이 쓰면 중단
-#     if cnt >= answer:
-#         return
-#
-#     # pos가 100이면 (10x10 다 확인) → 답 갱신
-#     if pos == 100:
-#         answer = min(answer, cnt)
-#         return
-#
-#     x, y = divmod(pos, 10)    # 몫, 나머지 튜플로 반환 (//, %)
-#
-#     if paper[x][y] == 0:
-#         dfs(pos + 1, cnt)
-#     else:
-#         # 큰 색종이부터 시도
-#         for size in range(5, 0, -1):
-#             if used[size] == 5:
-#                 continue
-#             if can_attach(x, y, size):
-#                 attach(x, y, size, 0)
-#                 used[size] += 1
-#                 dfs(pos + 1, cnt + 1)
-#                 attach(x, y, size, 1)
-#                 used[size] -= 1
-#
-# dfs(0, 0)
-# print(answer if answer != float('inf') else -1)
 # #######################################################
 
 paper = [list(map(int, input().split())) for _ in range(10)]
