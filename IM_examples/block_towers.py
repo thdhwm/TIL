@@ -9,7 +9,7 @@ for t in range(1, T + 1):
     stack_B = 1
     total_M1 = 0
     total_M2 = 0
-    sorted_blocks = sorted(blocks, reverse = True)
+    sorted_blocks = sorted(blocks, reverse=True)
 
     while block_count < N:   # 5
         if stack_A <= M1:   # 3
