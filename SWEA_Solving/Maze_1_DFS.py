@@ -1,4 +1,3 @@
-from collections import deque
 import sys
 sys.stdin = open('input.txt')
 
@@ -8,7 +7,7 @@ def maze_run(y, x):
 
     if maze[y][x] == '3':
         is_possible = True
-        return is_possible
+        return
 
     if maze[y][x] == '1':
         return
