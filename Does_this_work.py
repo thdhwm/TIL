@@ -45,10 +45,3 @@
 # import heapq 조으다 .heappush, .heappop  조으다
 
 # 유니온 파인드
-
-my_dict = {}
-
-my_dict[0] = [1]
-my_dict[0] += [4]
-
-print(list(my_dict.keys()))
