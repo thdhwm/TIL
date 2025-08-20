@@ -14,7 +14,4 @@ for t in range(1, T + 1):
     hex_to_bi = []
     hexa_decimal
 
-
-    
-
     print(f'#{t} {hex_to_bi}')
