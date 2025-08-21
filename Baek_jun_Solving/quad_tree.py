@@ -9,17 +9,18 @@ def quad_tree(arr):
     # zeros, ones 맞으면 str에 더하고
     # 아니면 아닌 영역에 대해서 quad_tree
     # dfs
-    if len(arr) == 1 and arr[0] == '1':
+    if len(arr) == 1 and arr[0][0] == '1':
         return '1'
-    elif len(arr) == 1 and arr[0] == '0':
+    elif len(arr) == 1 and arr[0][0] == '0':
         return '0'
     else:
         half = len(arr) // 2     # 슬라이싱 문제 있음 나중에 수정
         quadrant_2 = [[arr[i][j] for j in range(half)] for i in range(half)]
-        quadrant_1 =
-        quadrant_3 = 
-        quadrant_4 =
+        quadrant_1 = [[arr[i][j] for j in range(half, len(arr))] for i in range(half)]
+        quadrant_3 = [[arr[i][j] for j in range(half)] for i in range(half, len(arr))]
+        quadrant_4 = [[arr[i][j] for j in range(half, len(arr))] for i in range(half, len(arr))]
         return '(' + is_zeros_ones(quadrant_2) + is_zeros_ones(quadrant_1) + is_zeros_ones(quadrant_3) + is_zeros_ones(quadrant_4) + ')'
+
 
 def is_zeros_ones(arr):
     if len(arr) == 1 and arr[0][0] == '1':
@@ -28,7 +29,6 @@ def is_zeros_ones(arr):
         return '0'
     else:
         is_what = arr[0][0]
-        print(is_what)
         for i in range(len(arr)):
             for j in range(len(arr)):
                 if arr[i][j] != is_what:
@@ -36,8 +36,13 @@ def is_zeros_ones(arr):
         return is_what
 
 
-
 N = int(input())    # 2의 제곱수 1 ~ 64
 screen = [list(input()) for _ in range(N)]
+result = quad_tree(screen)
 
-print(quad_tree(screen))
+if result == '(0000)':
+    print('0')
+elif result == '(1111)':
+    print('1')
+else:
+    print(result)

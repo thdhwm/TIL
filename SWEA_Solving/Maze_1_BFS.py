@@ -22,7 +22,7 @@ def maze_run(y, x):
 
                 ni = y + di[k]                           # (y, x) 값 다음 값으로
                 nj = x + dj[k]
-                visited[ni][nj] = 1                          # visited -> True
+                visited[ni][nj] = visited[y][x] + 1          # visited -> True
                 visiting_queue.append((ni, nj))            # 다음값 큐에 더해주기
 
 
