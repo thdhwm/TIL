@@ -18,10 +18,11 @@ m = int(input())   # 버스 개수 (간선 개수)
 table = [[] for _ in range(n + 1)]    # 인접 리스트 구현
 
 for _ in range(m):
-    s, e, c = map(int, input().split())    #  s - 간선 시작점, e - 간선 끝점, c - 비용
+    s, e, c = map(int, input().split())    # s - 간선 시작점, e - 간선 끝점, c - 비용
     table[s].append((e, c))            # 인접 리스트 s idx 에 튜플로 (e, c) 저장
 
 s, e = map(int, input().split())      # 찾고자 하는 경로 s 노드에서 -> e 노드까지 최단 경로
+
 
 def dijkstra(s, table):      # s - 시작 노드, table - 인접 리스트  받아서
     INF = float('inf')       # 최소 비용(경로) 를 구해야 함으로 무한대(혹은 범위 밖 임의 큰수) 로 초기화
@@ -43,6 +44,7 @@ def dijkstra(s, table):      # s - 시작 노드, table - 인접 리스트  받�
                 heappush(q, (new_cost, next_node))     # 다음 노드로
 
     return dp                                               # 최소 비용 경로 반환
+
 
 result = dijkstra(s, table)                                 # 최소 비용 경로
 print(result)
