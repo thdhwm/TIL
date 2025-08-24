@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('input.txt')
+sys.stdin = open('../../Baek_jun_Solving/input.txt')
 
 N = int(input())
 formula = input().strip()
