@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('input.txt')
+sys.stdin = open('../SWEA_Solving/input.txt')
 # fxxk it doesn't work
 # odd_days 더 클때 안댐...
 # 그래서 고쳤더니 50/42

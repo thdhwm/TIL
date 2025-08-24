@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('../../Baek_jun_Solving/input.txt')
+sys.stdin = open('../Baek_jun_Solving/input.txt')
 #
 # paper = [list(map(int, input().split())) for _ in range(10)]
 # total = 0
