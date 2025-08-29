@@ -26,7 +26,7 @@ s, e = map(int, input().split())      # 찾고자 하는 경로 s 노드에서 -
 
 def dijkstra(s, table):      # s - 시작 노드, table - 인접 리스트  받아서
     INF = float('inf')       # 최소 비용(경로) 를 구해야 함으로 무한대(혹은 범위 밖 임의 큰수) 로 초기화
-    dp = [INF] * (n + 1)     # 비용을 저장할 리스트
+    dp = [INF] * (n + 1)     # 비용을 저장할 리스트    -> distance []  list
     dp[s] = 0                # s - 시작 노드는 이미 방문, 비용 0 으로 초기화
     q = []                   # 우선순위 큐 사용 위한 queue
     heappush(q, (0, s))    # (비용, 노드) queue 에 push -> 우선순위 큐 0 이 우선 순위, 작을수록 우선순위 up ( heap 는 뭘까? )

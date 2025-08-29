@@ -74,8 +74,15 @@
 # print(fib(10))
 
 # ################################################################################################
+# from heapq import heappush, heappop, heapify
+#
+# heap = [4, 15, 19, 11, 20, 13]
+# heapify(heap)
+#
+# print(heap)
 
-arr = [(0, 0)] * 9
-arr[1] = (1,1)
+# heapify - sort list in heap order  -> make a list in to heap
+# heappush(arr, element) - insert an element in heap order
+# heappop() - pop minimum element
 
-print(arr)
+# ################################################################################################
