@@ -1,43 +1,42 @@
-from heapq import heappush, heappop, heapify
 import sys
 sys.stdin = open('input.txt')
 
 
-def calc(start):    # start = 1
-    if not heap[start].isdecimal():
-        if heap[start] == '+':
-            return calc(2 * start) + calc(2 * start + 1)
+def calc(start):
+    now = heap[start]
 
-        elif heap[start] == '-':
-            return calc(2 * start) - calc(2 * start + 1)
+    if isinstance(now, str) and now.isdecimal():
+        return int(now)
 
-        elif heap[start] == '*':
-            return calc(2 * start) * calc(2 * start + 1)
+    operator, left_child, right_child = now
+    left_value = calc(int(left_child))
+    right_value = calc(int(right_child))
 
-        elif heap[start] == '/':
-            return calc(2 * start) / calc(2 * start + 1)
+    if operator == '+':
+        return left_value + right_value
 
-    else:
-        return int(heap[start])
+    elif operator == '-':
+        return left_value - right_value
 
-    return
+    elif operator == '*':
+        return left_value * right_value
+
+    elif operator == '/':
+        return left_value / right_value
 
 
 for test_case in range(1, 11):
     N = int(input())
     heap = [''] * (N + 1)
 
+    # 입력 처리
     for _ in range(N):
-        info = list(input().split())
-        if len(info) == 2:
-            heap[int(info[0])] = info[1]
+        info = input().split()
+        node = int(info[0])
+        if len(info) == 2:                  # number
+            heap[node] = info[1]
+        else:                             # operator
+            heap[node] = (info[1], info[2], info[3])
 
-        else:
-            heap[int(info[0])] = (info[1], info[2], info[3])
-
-
-    print(calc(1))
-
-
-
-    # print(f'#{test_case} {heap}')
+    result = int(calc(1))
+    print(f'#{test_case} {result}')
