@@ -41,6 +41,53 @@ union(parent, 3, 4)
 print(same(parent, 1, 4))
 print(parent)
 
+# #######################################################
+
+# with massive amount of input find() func can
+# reach depth deeper than pythons recursion limit
+# so try making find() func with using while
+
+
+def find_while(parent, a):
+    root = a
+    # find root node for a
+    while parent[root] != root:    # root - temp to chg a
+        root = parent[root]
+    # compress path (flatten)
+    while parent[a] != a:
+        next_node = parent[a]
+        parent[a] = root
+        a = next_node
+
+    return root
+
+
+# to keep the tree flat as possible
+# when conducting union() fuc
+# unite the tree by rank
+# rank represent height of the tree
+# unite shorter tree under longer tree
+
+# when initiating kruskal() func
+# make list for rank
+rank = [0] * (n + 1)
+
+
+def union_by_rank(parent, rank, a, b):
+    root_a = find(parent, a)
+    root_b = find(parent, b)
+    if root_a != root_b:
+        if rank[root_a] < rank[root_b]:    # lower under higher
+            parent[root_a] = root_b
+        elif rank[root_a] > rank[root_b]:
+            parent[root_b] = root_a
+        else:    # same rank
+            parent[root_b] = root_a
+            rank[root_a] += 1
+
+
+
+
 
 
 

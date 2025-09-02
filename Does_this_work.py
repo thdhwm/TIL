@@ -86,45 +86,50 @@
 # heappop() - pop minimum element
 
 # ################################################################################################
-import heapq
-from collections import defaultdict
-import sys
-sys.stdin = open('input.txt')
+# import heapq
+# from collections import defaultdict
+# import sys
+# sys.stdin = open('input.txt')
+#
+#
+# def dijkstra(start, table):
+#     costs = [float('inf')] * (n + 1)
+#     costs[start] = 0
+#     q = []
+#     heapq.heappush(q, (0, start))
+#
+#     while q:
+#         current_dist, current_node = heapq.heappop(q)
+#
+#         if costs[current_node] < current_dist:
+#             continue
+#
+#         for next_cost, next_node in table[current_node]:
+#             new_cost = current_dist + next_cost
+#             if costs[next_node] > new_cost:
+#                 costs[next_node] = new_cost
+#                 heapq.heappush(q, (new_cost, next_node))
+#
+#     return costs
+#
+#
+# n = int(input())
+# m = int(input())
+# table = defaultdict(list)
+#
+# for _ in range(m):
+#     s, e, c = map(int, input().split())
+#     table[s].append((c, e))
+#
+# s, e = map(int, input().split())
+#
+# result = dijkstra(s, table)
+# print(result)
 
+# #########################################################################################
 
-def dijkstra(start, table):
-    costs = [float('inf')] * (n + 1)
-    costs[start] = 0
-    q = []
-    heapq.heappush(q, (0, start))
-
-    while q:
-        current_dist, current_node = heapq.heappop(q)
-
-        if costs[current_node] < current_dist:
-            continue
-
-        for next_cost, next_node in table[current_node]:
-            new_cost = current_dist + next_cost
-            if costs[next_node] > new_cost:
-                costs[next_node] = new_cost
-                heapq.heappush(q, (new_cost, next_node))
-
-    return costs
-
-
-n = int(input())
-m = int(input())
-table = defaultdict(list)
-
-for _ in range(m):
-    s, e, c = map(int, input().split())
-    table[s].append((c, e))
-
-s, e = map(int, input().split())
-
-result = dijkstra(s, table)
-print(result)
+mDict = {}
+mDict[1] = 1, 2, 3, 4
 
 
 
