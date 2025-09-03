@@ -3,27 +3,29 @@ sys.stdin = open('input.txt')
 
 
 def dfs(depth):
-    if depth == M:   # M개 뽑으면 출력
+
+    if depth == M:   # M 개 뽑으면 출력
         print(*result)
+        ans.append(result)
         return
 
     for i in range(N):
-        if visited[arr[i]] == 0:
+        if visited[i] == 0:
             result.append(arr[i])
-            visited[arr[i]] = 1
+            visited[i] = 1
             dfs(depth + 1)
-            visited[arr[i]] = 0
+            visited[i] = 0
             result.pop()
 
 
 N, M = map(int, input().split())
 arr = sorted(list(map(int, input().split())))
-visited = [0] * 10001
+visited = [0] * (N + 1)   # idx 로 visited 관리
 result = []
-
+ans = []
 dfs(0)
+print(ans)
 
-#
 # def dfs(depth):
 #     global rain
 #     if depth == M:   # M개 뽑으면 출력

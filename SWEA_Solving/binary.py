@@ -20,7 +20,8 @@
 # [출력]
 
 # 각 줄마다 "#T" (T는 테스트 케이스 번호)를 출력한 뒤, 답을 출력한다.
-
+import sys
+sys.stdin = open('input.txt')
 
 T = int(input())
 
