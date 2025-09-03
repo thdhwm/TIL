@@ -62,7 +62,7 @@ def run1():
 
 
 if __name__ == '__main__':
-	#sys.stdin = open('sample_input.txt', 'r')
+	sys.stdin = open('sample_input.txt', 'r')
 	inputarray = input().split()
 	TC = int(inputarray[0])
 	MARK = int(inputarray[1])
