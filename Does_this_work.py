@@ -128,42 +128,46 @@
 
 # #########################################################################################
 
-_hex = '000000000110100000000'
-_valid = '0001101'
+# _hex = '000000000110100000000'
+# _valid = '0001101'
+#
+# int(_hex[:7])
+# a = bin(1110110110001011101101100010110001000110100100110111011)
+# b = bin(111011)
+#
+#
+# print(int(_hex) ^ int(_valid) == 0)
+# print(~int(_valid))
+# print(len('1110110110001011101101100010110001000110100100110111011'))
+#
+# for i in range(0, 8, 2):
+#     print(i)
 
-int(_hex[:7])
-a = bin(1110110110001011101101100010110001000110100100110111011)
-b = bin(111011)
-
-
-print(int(_hex) ^ int(_valid) == 0)
-print(~int(_valid))
-print(len('1110110110001011101101100010110001000110100100110111011'))
-
-for i in range(0, 8, 2):
-    print(i)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# ##################################################################
+def swap(n=0):
+    global result
+    if n == N:
+        result = max(result, int(''.join(board)))
+        return
+    memo = (n, tuple(board))
+    if memo in memoization:
+        return
+    memoization.add(memo)
+    for i in range(M - 1):
+        for j in range(i + 1, M):
+            board[i], board[j] = board[j], board[i]
+            swap(n + 1)
+            board[i], board[j] = board[j], board[i]
 
 
-
-
-
-
+T = int(input())
+for case_num in range(1, 1 + T):
+    a, b = input().split()
+    board = list(a)
+    N = int(b)
+    M = len(board)
+    result = 0
+    memoization = set()
+    swap()
+    print(f'#{case_num} {result}')
 

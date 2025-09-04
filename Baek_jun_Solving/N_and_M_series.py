@@ -3,28 +3,45 @@ sys.stdin = open('input.txt')
 
 
 def dfs(depth):
+    global result, rain
+    prev = 0
 
     if depth == M:   # M 개 뽑으면 출력
+        # ans.append(result)      # 복사 문제....
+        # result = result[:]      # global scope에서 result 받으니까 복사...
+
         print(*result)
-        ans.append(result)
         return
 
     for i in range(N):
-        if visited[i] == 0:
+        # if visited[i] != 0:
+        #     continue
+
+        if prev == arr[i]:
+            continue
+
+        if len(result) == 0 or rain <= arr[i]:
+            rain = arr[i]
             result.append(arr[i])
-            visited[i] = 1
+            # visited[i] = 1
             dfs(depth + 1)
-            visited[i] = 0
+            # visited[i] = 0
             result.pop()
+            if len(result) != 0:
+                rain = result[-1]
+            else:
+                rain = 1
+            prev = arr[i]
 
 
 N, M = map(int, input().split())
 arr = sorted(list(map(int, input().split())))
-visited = [0] * (N + 1)   # idx 로 visited 관리
+# visited = [0] * N   # idx 로 visited 관리
 result = []
-ans = []
+rain = 1
 dfs(0)
-print(ans)
+
+# ##################################################################
 
 # def dfs(depth):
 #     global rain
@@ -48,5 +65,33 @@ print(ans)
 # visited = [False] * (N + 1)
 # result = []
 # rain = 1
+#
+# dfs(0)
+# ################################################
+
+#
+# def dfs(depth):
+#     global result
+#     prev = 0
+#
+#     if depth == M:   # M 개 뽑으면 출력
+#         print(*result)
+#         return
+#
+#     for i in range(N):
+#         # if visited[i] == 0 and prev != arr[i]:
+#         if prev != arr[i]:
+#             result.append(arr[i])
+#             # visited[i] = 1
+#             dfs(depth + 1)
+#             # visited[i] = 0
+#             result.pop()
+#             prev = arr[i]
+#
+#
+# N, M = map(int, input().split())
+# arr = sorted(list(map(int, input().split())))
+# # visited = [0] * N
+# result = []
 #
 # dfs(0)
