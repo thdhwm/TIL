@@ -46,7 +46,7 @@
 
 # 유니온 파인드
 
-# ################################################################################################
+# ########################################################################################################### #
 # def fib(n):        # memoization ( top down )
 #     if n <= 1:
 #         return n
@@ -126,7 +126,7 @@
 # result = dijkstra(s, table)
 # print(result)
 
-# #########################################################################################
+# ##########################################################################################
 
 # _hex = '000000000110100000000'
 # _valid = '0001101'
@@ -143,31 +143,115 @@
 # for i in range(0, 8, 2):
 #     print(i)
 
-# ##################################################################
-def swap(n=0):
-    global result
-    if n == N:
-        result = max(result, int(''.join(board)))
-        return
-    memo = (n, tuple(board))
-    if memo in memoization:
-        return
-    memoization.add(memo)
-    for i in range(M - 1):
-        for j in range(i + 1, M):
-            board[i], board[j] = board[j], board[i]
-            swap(n + 1)
-            board[i], board[j] = board[j], board[i]
+# ###########################################################################################
+# def swap(n=0):
+#     global result
+#     if n == N:
+#         result = max(result, int(''.join(board)))
+#         return
+#     memo = (n, tuple(board))
+#     if memo in memoization:
+#         return
+#     memoization.add(memo)
+#     for i in range(M - 1):
+#         for j in range(i + 1, M):
+#             board[i], board[j] = board[j], board[i]
+#             swap(n + 1)
+#             board[i], board[j] = board[j], board[i]
+#
+#
+# T = int(input())
+# for case_num in range(1, 1 + T):
+#     a, b = input().split()
+#     board = list(a)
+#     N = int(b)
+#     M = len(board)
+#     result = 0
+#     memoization = set()
+#     swap()
+#     print(f'#{case_num} {result}')
 
+# ###########################################################################################
+# from collections import defaultdict
+# from heapq import heappush, heappop
+# import sys
+# sys.stdin = open('input.txt')
+#
+# N = int(input())   # 도시 개수
+# M = int(input())   # 버스 개수 (간선 개수)
+# graph = defaultdict(list)
+#
+# for _ in range(M):
+#     s, e, d = map(int, input().split())
+#     graph[s].append((d, e))     # 양방향이 아니야 이 라만릊댜매ㅜ햗ㄱ
+#     # graph[e].append((d, s))
+#
+# start, end = map(int, input().split())
+#
+#
+# def dijkstra(start, graph):
+#     distance = [float('inf')] * (N + 1)   # 1~N city
+#     distance[start] = 0
+#     pq = [(0, start)]    # 비용, 시작
+#
+#     while pq:
+#         current_dist, current_node = heappop(pq)
+#         if distance[current_node] < current_dist:
+#             continue
+#
+#         for next_distance, next_node in graph[current_node]:
+#             new_distance = current_dist + next_distance
+#             if new_distance < distance[next_node]:
+#                 distance[next_node] = new_distance
+#                 heappush(pq, (new_distance, next_node))
+#
+#     return distance
+#
+#
+# result = dijkstra(start, graph)
+# print(result)
 
-T = int(input())
-for case_num in range(1, 1 + T):
-    a, b = input().split()
-    board = list(a)
-    N = int(b)
-    M = len(board)
-    result = 0
-    memoization = set()
-    swap()
-    print(f'#{case_num} {result}')
+# ##############################################################################################
+
+#
+# def find(parent, a):
+#     root = a
+#     while parent[root] != root:
+#         root = parent[root]
+#
+#     while parent[a] != a:
+#         next_node = parent[a]
+#         parent[a] = root
+#         a = next_node
+#
+#     return root
+#
+# rank = [0] * (n + 1)
+# def union(parent, rank, a, b):
+#     root_a = find(parent, a)
+#     root_b = find(parent, b)
+#     if root_a != root_b:
+#         if rank[root_a] < rank[root_b]:
+#             parent[root_a] = root_b
+#
+#         elif rank[root_a] > rank[root_b]:
+#             parent[root_b] = root_a
+#         else:
+#             parent[root_b] = root_a
+#             rank[root_a] += 1
+#     return
+#
+#
+# parent = []
+#
+# #########################################################
+from collections import defaultdict
+
+arr = ['1', '2', '3', '4']
+b = ''.join(arr)
+print(b)
+c = defaultdict(str)
+
+e = c['a'].join(arr)
+print(e)
 

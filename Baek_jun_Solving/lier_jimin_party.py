@@ -55,7 +55,7 @@ parent = list(range(N + 1))  # 사람 1~N의 부모 배열
 
 # 진실 아는 사람 그룹화
 if T > 0:
-    truth_root = T  # 진실 그룹의 대표 (첫 번째 진실 아는 사람)
+    truth_root = truth[0]  # 진실 그룹의 대표 (첫 번째 진실 아는 사람)
     for person in truth:
         union(parent, truth_root, person)  # 진실 아는 사람을 같은 그룹으로
 
