@@ -2,7 +2,50 @@ import sys
 sys.stdin = open('input.txt')
 
 # #######################################################################
-# # lower bound, upper bound
+
+def lower_bound(target):
+    left, right = 0, len(gHardness) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+
+        if target <= gHardness[mid]:
+            right = mid - 1
+        else:
+            left = mid + 1
+
+    return left
+
+
+def upper_bound(target):
+    left, right = 0, len(gHardness) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+
+        if target >= gHardness[mid]:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return left
+
+
+T = int(input())
+
+for test_case in range(1, T + 1):
+    N, Q = map(int, input().split())
+    gHardness = sorted(list(map(int, input().split())))
+    result = []
+    for _ in range(Q):
+        Si, Ei = map(int, input().split())
+
+        lower_idx = lower_bound(Si)
+        upper_idx = upper_bound(Ei)
+        result.append(upper_idx - lower_idx)
+
+    print(f'#{test_case}', *result)
+# #######################################################################
 # # 2이상 3이하인 숫자들
 # # 2가 처음 시작하는 index = 2
 # # 3이 끝나는 index = 6
@@ -45,4 +88,3 @@ sys.stdin = open('input.txt')
 # lower_idx = lower_bound(2)
 # upper_idx = upper_bound(8)
 # print(f'2~8 사이 숫자 = {upper_idx - lower_idx}개')
-# #######################################################################
