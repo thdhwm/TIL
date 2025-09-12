@@ -69,3 +69,35 @@ for test_case in range(1, T + 1):
     heights = list(map(int, input().split()))
 
     print(f'#{test_case} {tower(N, B, heights)}')
+
+# #######################################################################
+# 문제풀이 강의
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

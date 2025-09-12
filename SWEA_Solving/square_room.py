@@ -26,7 +26,7 @@ T = int(input())
 di = [-1, 0, 1, 0]     # delta
 dj = [0, 1, 0, -1]
 for test_case in range(1, T + 1):
-    N = int(input())
+    N = int(input())     # N - 1~ 1000  ==>> 최악 생각하면 원래는 재귀 하면 안댄다!
     room = [list(map(int, input().split())) for _ in range(N)]
     dp = [[0] * N for _ in range(N)]
     max_move = 0
@@ -46,3 +46,8 @@ for test_case in range(1, T + 1):
                     room_number = room[i][j]
 
     print(f'#{test_case} {room_number} {max_move}')
+# #####################################################################################
+# 문제풀이 강의
+# 숫자 인덱스로 리스트 만들고   ex. 3->4->5 가능하면 [0, 0, 0, 1, 1, 1, 0, 0, ... , 0]
+# 인접칸에 +1 인 수가 있으면 1로 표시
+

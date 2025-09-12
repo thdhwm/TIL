@@ -4,7 +4,7 @@ sys.stdin = open('input.txt')
 
 T = int(input())
 
-def sDigit(i, j, depth):
+def sDigit(i, j, depth):    # seven_digit
 
     num_list.append(matrix[i][j])
     if depth == 7:
