@@ -53,6 +53,7 @@ print(kruskal(edges, 4))  # 출력: 6 (MST 비용: 2+1+3)
 # 시간 복잡도는 O((V + E) log V)
 # 밀집 그래프(간선 많은 그래프)에 적합
 
+# 추가 최적화 key word -> decrease key,, fibonacci heap
 
 def prim(graph, start, n):
     visited = [False] * (n + 1)    # for idx based locating -> n + 1
