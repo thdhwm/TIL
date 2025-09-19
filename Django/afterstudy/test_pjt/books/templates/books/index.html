@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block contents %}
+<h1>Hi</h1>
+
+{{ menus }} {% for menu in menus %}
+<p>메뉴이름 : <a href={% url 'books:detail' menu %}>{{ menu }}</a></p>
+{% comment %} <p>메뉴이름 : <a href="/books/{{ menu }}">{{ menu }}</a></p> {% endcomment %}
+<hr>
+
+{% endfor %}
+{% endblock contents %}
