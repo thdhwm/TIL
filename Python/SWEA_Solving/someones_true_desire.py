@@ -9,6 +9,7 @@ def dijkstra(start_i, start_j):
     dists[start_i][start_j] = table[start_i][start_j]
     pq = [(dists[start_i][start_j], start_i, start_j)]
     max_dist = 0
+
     while pq:
         fatigue, now_i, now_j = heappop(pq)
 
@@ -29,6 +30,7 @@ def dijkstra(start_i, start_j):
                 continue
             dists[ni][nj] = new_fatigue
             heappush(pq, (new_fatigue, ni, nj))
+
 
     for i in range(N):
         for j in range(N):
