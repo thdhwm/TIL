@@ -1,6 +1,6 @@
 from collections import deque
-import sys
-sys.stdin = open('input.txt')
+# import sys
+# sys.stdin = open('input.txt')
 # boj 12851
 
 
@@ -15,7 +15,7 @@ def left(num):  # x - 1 로 이동    ( 범위 안에 있는 )
 def right(num):  # x + 1 로 이동    ( 범위 안에 있는 )
     return num + 1 if num + 1 <= 100000 else -1
 
-
+                    
 def hide_n_seek(start, end):  # bfs
     global cnt
     visited = [300000] * 100001
