@@ -52,7 +52,4 @@ def hide_n_seek(start, end):  # bfs
 
 N, K = map(int, input().split())
 
-# fastest, nWays = hide_n_seek(N, K)
-
-# print(fastest, nWays)
 print(*hide_n_seek(N, K))
