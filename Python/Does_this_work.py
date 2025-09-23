@@ -268,3 +268,32 @@
 # print(arr)      # [2, 4, 8, 10, 1, 3, 5, 7]
 
 # ######################################################################
+
+# 월말 예상
+# 완전 탐색
+# 백트래킹
+# 그래프 -dfs, bfs
+# 트리 - 이진 트리     ->>>>>  넘 쉽당
+# ---------------------------------------------------------------------------------------------------
+# 다익스트라
+# mst - prim, kruskal
+# union find     ->>>>    kruskal  중점 공부!   (kruskal + union find)
+# ---------------------------------------------------------------------------------------------------
+# ㅅㅅㅎ
+# dfs, bfs 차이점? ex. 어느 상황에서 쓰는가, 순회 순서 차이
+
+# ######################################################################
+
+# django
+
+# 가상환경 
+# python -m venv venv    ->    위치에 venv 생성
+# source venv/Scripts/activate    ->    venv 활성화
+# deactivate    ->    venv 비활성화
+# pip freeze > requirements.txt    ->    의존성 기록해서 requirements.txt 생성
+# pip install -r requirements.txt    ->    requirements.txt 읽어와서 의존성 패키지 설치
+# pip install django    ->    django 설치
+
+# 프로젝트 시작
+# django-admin startproject firstpjt .    ->    현 위치에 firstpjt 프로젝트 생성
+# django-admin startproject firstpjt    ->    현 위치 아래 폴더로 firstpjt 프로젝트 생성
