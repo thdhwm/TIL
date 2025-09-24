@@ -8,12 +8,13 @@
 <body>
   <nav>
     <a href="{% url 'bakeries:index' %}">Home</a>
-    <a href="{% url 'bakeries:create' %}">Create</a>
+    <a href="{% url 'bakeries:create' %}">생성하기</a>
   </nav>
+
   <h1>빵집 추천</h1>
 
   {% block content %}
   {% endblock content %}
-
+  
 </body>
 </html>

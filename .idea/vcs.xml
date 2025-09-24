@@ -3,5 +3,9 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Django/Django/day2/django_ws_2_1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Django/Django/day3/django_hw_3_2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Django/Django/day3/django_hw_3_4" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Django/Django/day3/django_ws_3_1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Django/Django/day3/django_ws_3_2" vcs="Git" />
   </component>
 </project>

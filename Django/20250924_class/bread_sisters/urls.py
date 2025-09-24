@@ -1,5 +1,5 @@
 """
-URL configuration for test_pjt project.
+URL configuration for bread_sisters project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -17,10 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # http://127.0.0.1:8000/books/  -> books 의 index 함수로 보내겠다
-    path('books/', include("books.urls")),
+    path('bakeries/', include("bakeries.urls")),
 ]
-

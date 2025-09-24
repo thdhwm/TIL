@@ -294,6 +294,167 @@
 # pip install -r requirements.txt    ->    requirements.txt 읽어와서 의존성 패키지 설치
 # pip install django    ->    django 설치
 
-# 프로젝트 시작
+
+# 프로젝트 / 앱 시작
 # django-admin startproject firstpjt .    ->    현 위치에 firstpjt 프로젝트 생성
 # django-admin startproject firstpjt    ->    현 위치 아래 폴더로 firstpjt 프로젝트 생성
+# python manage.py startapp appname    ->    appname 이름의 앱 생성
+    # 앱 생성한 후에 등록 꼭 하기!    ->    /settings.py => INSTALLED_APPS = [] 에 'appname',
+    # ',' 콤마 뒤에 추가 꼭꼭!
+
+
+# 서버
+# python manage.py runserver    ->    서버 시작
+# ctrl + c    ->    종료
+
+
+# 요청 / 응답
+    # URL -> View -> Template   순으로 항상 습관 들이기
+# 프로젝트에 urls.py
+    # 나중에 앱이 많아지면 관리 용이하게 하기 위해 각 앱에 urls.py 만들어서 관리할거임
+    # 프로젝트에 있는 urls.py는 각 앱에 있는 urls.py 로 넘겨주게
+
+# from django.contrib import admin
+# from django.urls import path, include    ---->> include 추가
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('bakeries/', include('bakeries.urls'))    ---->> bakeries 앱에 있는 urls.py 로 넘기기 
+# ]
+
+# 앱에 있는 urls.py
+# from django.urls import path
+# from . import views    ---->> from . => 명시적 경로 위해, 현 디렉토리에서 ~ 라는 의미
+# ---->> import views => views 에 있는 함수들 가져올꺼니까 views 를 import 하기
+
+# app_name='bakeries'     ---->> url 앱 이름 
+# urlpatterns = [
+#     path('', views.index, name='index'),    ---->> views의 index 함수로 넘김
+#     path('<int:id>/', views.detail, name='detail'),    ---->> views의 detail 함수로 넘김
+            # <int:id>  ---->>   이름 id 인 int형 변수를 같이 넘겨줄거임 
+# ]
+
+
+#앱에 있는 views.py
+# from django.shortcuts import render, get_object_or_404   ---->> 에러 상황 위해 get_object_or_404 추가
+# from .models import Bakery    ---->> db 에 있는 data 사용 위해 .models 에 있는 Bakery, class 가져옴 
+
+# def index(request):      ---->> views.index 로 들어오면 이거 실행  request는 그냥 기본이라 생각해라
+#     bakeries = Bakery.objects.all()    ---->> Bakery 전체 데이터 조회     
+#     context = {                        ---->> 넘겨주는 context
+#         'bakeries': bakeries 
+#     }
+#     return render(request, 'bakeries/index.html', context)    ---->> request, context 넘기면서 html 띄우기
+
+# def detail(request, id):    ---->> detail은 <int:id> 인자도 받으니까 request, id
+#     bakery = get_object_or_404(Bakery, id=id)    # Bakery 에서 id 조회  없으면 404   
+#     context = {
+#         'bakery': bakery,                     
+#     }
+#     return render(request, 'bakeries/detail.html', context)
+
+
+
+# templates    ---->>  여기에 html들 만들어 놓기
+# 앱이 많아지면 구분 잘 하려고 template 밑에 앱 이름으로 폴더 하나 걍 만들고 거기에 html
+# templates/bakeries/index.html  이런 경로
+
+
+
+
+# 상속 - hmtl 페이지 만들 때 기본틀, 전체 페이지들이 공유하는 공통 요소 만들고 상속시키기위해
+# 프로젝트랑 같은 위치에 layout 폴더 생성
+    # 생성 후 꼭! settings.py 에 TEMPLATES 에 'DIRS'에 추가
+    # template 검색할 때 BASE_DIR 밑에 있는 'layout' 폴더도 봐라... 라는 뜻
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         'DIRS': [BASE_DIR / 'layout'],   
+# ...
+
+# layout 에 기본 틀로 쓸 base.html 생성
+# <!DOCTYPE html>
+# <html lang="en">
+# <head>
+#   <meta charset="UTF-8">
+#   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+#   <title>Document</title>
+# </head>
+# <body>
+#   <nav>
+#     <a href="{% url 'bakeries:index' %}">Home</a>
+#     <a href="">Create</a>
+#   </nav>
+#   <h1>빵집 추천</h1>
+#
+#   {% block content %}    # 페이지마다 달라지는 영역은 block 으로
+#   {% endblock content %}
+#
+# </body>
+# </html>
+
+# index.html 예시
+# {% extends "base.html" %}    ---->> base.html 에서 상속 받는다는 느낌
+#
+# {% block content %}    ---->> base.html 중 block 안쪽 부분 다음으로 채우겠다...    
+#     <h2>메인 페이지</h2>
+#
+#     {% for bakery in bakeries %}    ---->> for 문 사용 위한 django html language
+#   
+#     <hr>
+#     <p>이름 : <a href="{% url 'bakeries:detail' bakery.id %}">{{ bakery.name }}</a></p>
+#     <p>평점 : {{ bakery.rating }}</p>
+#     <hr>
+#                         # context 로 받아온거 변수로 쓸 수 있음
+#     {% endfor %}
+# {% endblock content %}
+
+
+# <p>이름 : <a href="{% url 'bakeries:detail' bakery.id %}">{{ bakery.name }}</a></p>
+# {% url 'bakeries:detail' bakery.id %}    ---->> {% url  %} 로 url 가져오는디
+    # 'bakeries:detail'    app_name='bakeries' 인 urls.py의 name='detail'인 url path
+    # bakery.id 는 detail이 <int:id> 변수를 받으므로 넣어준거
+    # space 로 변수 구분, 만약 많은 변수를 받는다면
+    # {% url /ulr/ulr <int> <str> <float> %}   이런 형식으로
+
+
+
+# models.py    ---->>  각 앱에서 DB 할라고 하는거
+# class Bakery(models.Model):     # django에서 미리 만들어져있는 Model 에서 상속받아서 class 만들기 
+#     # 빵집 이름 (20자 이내)
+#     name = models.CharField(max_length=20)   # column 만들기 
+                        # 각 column 에 어떤 데이터 넣을지는 model field 로 찾기 
+#     # 주소
+#     address = models.TextField()
+#
+#     # 평점 (예: 0.0 ~ 5.0 범위 예상, 소수점 1자리까지)
+#     rating = models.FloatField()
+#
+#     # 시작/종료 시간
+#     opening_time = models.DateTimeField()
+#     closing_time = models.DateTimeField()
+#
+#     def __str__(self):
+#         return f'{self.name} {self.rating}/10'
+
+# 선언할거 다 해 놓고, 저장하고
+# python manage.py makemigrations
+# python manage.py migrate
+
+
+
+# admin
+# 관리자 페이지 볼 수 있게 관리자 계정 만드는거
+# python manage.py createsuperuser
+# 비번 쳐도 따로 표시는 안댐 당황하지 말기
+
+
+# DTL
+
+
+# CRUD
+# db 데이터 관리 하는거
+# Create, Read, Update, Delete
+# 노션 보덩가
+
+# ######################################################################
