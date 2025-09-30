@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article
 from .forms import ArticleForm
 
@@ -45,3 +45,36 @@ def create(request):
     
     return render(request, "articles/create.html", context)
 
+
+def detail(request, id):
+    article = get_object_or_404(Article, id=id)
+
+    context = {
+        'article': article,
+    }
+
+    return render(request, "articles/detail.html", context)
+
+def update(request, id):
+    article = Article.objects.get(id=id)
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect('articles:detail', article.id)
+    
+    else:
+        form = ArticleForm(instance=article)
+
+    context = {
+        'article': article,
+        'form': form,
+    }
+    return render(request, 'articles/update.html', context)
+
+def delete(request, id):
+    article = get_object_or_404(Article, id=id)
+    article.delete()
+
+    return redirect('articles:index')
+    pass

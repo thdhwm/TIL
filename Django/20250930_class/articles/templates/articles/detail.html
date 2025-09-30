@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Details</h2>
+  <p>Title : {{ article.title }}</p>
+  <p>Content : {{ article.content }}</p>
+  <p>Created at : {{ article.created_time|date:"h:i A" }}</p>
+  <p>Updated at : {{ article.updated_time|date:"h:i A" }}</p>
+
+
+  <form action= " {% url "articles:delete" article.id %} " method='POST'>
+    {% csrf_token %}
+    <button>DELETE</button>
+  </form>
+
+  <a href=" {% url "articles:update" article.id %} "> 
+    <button>UPDATE</button> 
+  </a>
+
+{% endblock content %}

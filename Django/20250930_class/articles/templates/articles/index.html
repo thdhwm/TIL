@@ -6,7 +6,7 @@
   <a href="{% url "articles:create" %}"><button>생성하기</button></a>
 
   {% for article in articles %}
-    <p>제목: {{ article.title }}</p>
+    <p>제목: <a href="{% url 'articles:detail' article.id %}">{{ article.title }}</a></p>
     <p>내용: {{ article.content }}</p>
     <hr>
   {% empty %}
