@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>게시글 생성하기</h1>
+
+  {{ form.errors }}
+  
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>제출하기</button>
+  </form>
+
+{% endblock content %}
