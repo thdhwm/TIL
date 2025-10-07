@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Main Page</h2>
+  <a href=" {% url 'gacha:create' %} "><button>Add Character</button></a>
+
+{% for character in gacha %}
+  <p>name : <a href=" {% url 'gacha:detail' gacha.id %} ">{{ character.name }}</a></p>
+  <p>from : {{ character.game }}</p>
+  <p>urgency : {{ character.urgency }}</p>
+  <hr>
+{% endfor %}
+
+{% endblock content %}

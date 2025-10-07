@@ -77,4 +77,3 @@ def delete(request, id):
     article.delete()
 
     return redirect('articles:index')
-    pass

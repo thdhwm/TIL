@@ -88,7 +88,7 @@ dj = [0, 1, 0, -1]
 
 outer()
 prev = decay()
-connect()
+# connect()
 
 for row in parents:
     print(row)
