@@ -36,3 +36,5 @@ for row in graph:    # look for possible ans
 print(cnt - 1)    # - 1 because row 0
 
 # time out in python, pass in pypy...
+
+# 키 순서를 알 수 있다 -> 다른 모든 점과 비교 가능 
