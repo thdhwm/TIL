@@ -41,11 +41,11 @@ union(parent, 3, 4)
 print(same(parent, 1, 4))
 print(parent)
 
-# #######################################################
+# ######################################################################################################
 
 # with massive amount of input find() func can
 # reach depth deeper than pythons recursion limit
-# so try making find() func with using while
+# so try making find() func with using 'while'
 
 
 def find_while(parent, a):
