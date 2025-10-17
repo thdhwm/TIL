@@ -24,14 +24,12 @@ sys.stdin = open('input.txt')
 # # #########################################
 
 
-# 유니온-파인드: 부모 찾기 (경로 압축 포함)
 def find(parent, x):
     if parent[x] != x:
         parent[x] = find(parent, parent[x])  # 경로 압축
     return parent[x]
 
 
-# 유니온-파인드: 두 그룹 합치기
 def union(parent, a, b):
     a = find(parent, a)
     b = find(parent, b)
@@ -50,7 +48,6 @@ for _ in range(M):
     P, *party = list(map(int, input().split()))
     parties.append(party)  # 참석자 번호만 저장
 
-# 유니온-파인드 초기화
 parent = list(range(N + 1))  # 사람 1~N의 부모 배열
 
 # 진실 아는 사람 그룹화
