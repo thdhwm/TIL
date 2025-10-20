@@ -68,18 +68,22 @@ sys.stdin = open('input.txt')
 
 # ##############################################################################
 
-def find(x):
+# 유니온 파인드 해야지?
+# 근디 이름이라 str, 즉 list 말고 dict로 해야겠다...
+
+def find(x):    # 파인드
     if parent[x] != x:
         parent[x] = find(parent[x])
     return parent[x]
 
-def union(a, b):
+
+def union(a, b):   # 유니온
     a = find(a)
     b = find(b)
 
     if a != b:
         parent[b] = a
-        number[a] += number[b]
+        number[a] += number[b]    # 네트워크 구성원 숫자 몰아주기
     print(number[a])
 
 

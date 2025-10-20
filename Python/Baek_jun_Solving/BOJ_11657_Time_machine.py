@@ -6,18 +6,14 @@ INF = float('inf')
 def bellman_ford(start):
     dist[start] = 0
 
-    # n번의 라운드를 반복
-    for i in range(1, n + 1):
-        # 매 라운드마다 모든 간선을 확인
-        for j in range(m):
-            now, next, cost = edges[j][0], edges[j][1], edges[j][2]
-            # 현재 간선을 거쳐서 다른 노드로 이동하는 거리가 더 짧은 경우
-            if dist[now] != INF and dist[next] > dist[now] + cost:
-                dist[next] = dist[now] + cost
-                # n번째 라운드에서도 값이 갱신된다면 음수 순환 존재
-                if i == n:
-                    return True
+    for i in range(1, n + 1):    # n번의 라운드를 반복
+        for start, end, cost in edges:     # 매 라운드마다 모든 간선을 확인
 
+            if dist[start] != INF and dist[end] > dist[start] + cost:    # 현재 간선을 거쳐서 다른 노드로 이동하는 거리가 더 짧은 경우
+                dist[end] = dist[start] + cost
+
+                if i == n:     # n번째 라운드에서도 값이 갱신된다면 음수 순환 존재
+                    return True
     return False
 
 
@@ -31,13 +27,12 @@ for _ in range(m):
 
 negative_cycle = bellman_ford(1)
 
-if negative_cycle:
+if negative_cycle:    # 음의 싸이클 있음
     print(-1)
+
 else:
     for i in range(2, n + 1):
-        # 도달할 수 없는 경우
-        if dist[i] == INF:
+        if dist[i] == INF:    # 도달할 수 없는 경우
             print(-1)
-        # 도달 가능한 경우
-        else:
+        else:    # 도달 가능한 경우
             print(dist[i])
