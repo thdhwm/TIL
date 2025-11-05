@@ -8,6 +8,11 @@
     <mapping directory="$PROJECT_DIR$/Django/Django/day3/django_ws_3_1" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Django/Django/day3/django_ws_3_2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Django/Django/day5/django_hw_5_4" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/SQL/db_ws_1_a" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/SQL/db_ws_1_b" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/SQL/db_ws_2_3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/SQL/db_ws_2_a" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/SQL/db_ws_2_b" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pjt" vcs="Git" />
   </component>
 </project>
