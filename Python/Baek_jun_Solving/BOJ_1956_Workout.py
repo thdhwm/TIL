@@ -1,3 +1,5 @@
+import sys
+sys.stdin = open('input.txt')
 INF = float('inf')
 answer = INF
 

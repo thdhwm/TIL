@@ -1,3 +1,5 @@
+import sys
+sys.stdin = open('input.txt')
 import heapq
 # 걍 다익스트라 거리 배열 출력하기
 # 근디 pypy만 되더라
