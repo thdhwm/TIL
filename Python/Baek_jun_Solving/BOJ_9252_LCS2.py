@@ -1,13 +1,16 @@
 import sys
 sys.stdin = open('input.txt')
 
-str1 = [0] + list(input())
-str2 = [0] + list(input())
+# dpdp....
 
-len_1 = len(str1)
-len_2 = len(str2)
 
-array = [['' for _ in range(len_1)] for _ in range(len_2)]
+str1 = [0] + list(input())  # 1-base idx
+str2 = [0] + list(input())  # 1-base idx
+
+len_1 = len(str1)    # length of 1st str
+len_2 = len(str2)    # length of 2nd str
+
+array = [['' for _ in range(len_1)] for _ in range(len_2)]    # 1st str * 2nd str matrix
 
 for i in range(1, len_2):
     for j in range(1, len_1):

@@ -153,33 +153,33 @@ def bfs():
                 nx = x + dx[i]
                 if ny < 0 or nx < 0 or ny >= H or nx >= W:
                     continue
-                if graph[ny][nx]:
+                if graph[ny][nx]:    # 벽이면 continue
                     continue
-                if visited[ny][nx][z + 1] != -1:
+                if visited[ny][nx][z + 1] != -1:    # 왔던 장소면 continue
                     continue
                 que.append([ny, nx, z + 1])
-                visited[ny][nx][z + 1] = visited[y][x][z] + 1
+                visited[ny][nx][z + 1] = visited[y][x][z] + 1    # visited 숫자로 동작 수 계산
 
-        for i in range(8, 12):    # 말 이동 불가능하면, 상하좌우
+        for i in range(8, 12):    # 상하좌우
             ny = y + dy[i]
             nx = x + dx[i]
             if ny < 0 or nx < 0 or ny >= H or nx >= W:
                 continue
-            if graph[ny][nx]:
+            if graph[ny][nx]:    # 벽이면 continue
                 continue
-            if visited[ny][nx][z] != -1:
+            if visited[ny][nx][z] != -1:    # 왔던 장소면 continue 
                 continue
             que.append([ny, nx, z])
-            visited[ny][nx][z] = visited[y][x][z] + 1
+            visited[ny][nx][z] = visited[y][x][z] + 1    # visited 숫자로 동작 수 계산
 
-    return -1
+    return -1    # 불가능하면 -1
 
 
 K = int(input())
 W, H = map(int, input().split())
 graph = [list(map(int, input().split())) for _ in range(H)]
 
-dy = (1, 2, 2, 1, -1, -2, -2, -1, -1, 0, 0, 1)
+dy = (1, 2, 2, 1, -1, -2, -2, -1, -1, 0, 0, 1)    # 말, 상하좌우
 dx = (-2, -1, 1, 2, 2, 1, -1, -2, 0, -1, 1, 0)
 
 print(bfs())

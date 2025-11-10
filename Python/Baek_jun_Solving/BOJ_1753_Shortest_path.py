@@ -1,4 +1,6 @@
 import heapq
+# 걍 다익스트라 거리 배열 출력하기
+# 근디 pypy만 되더라
 
 
 def dijkstra(start):
@@ -12,7 +14,6 @@ def dijkstra(start):
         if distance[now] < dist:
             continue
 
-        # 현재 노드와 연결된 인접 노드 확인
         for i in graph[now]:
             cost = dist + i[1]
             if cost < distance[i[0]]:
@@ -22,14 +23,13 @@ def dijkstra(start):
 
 INF = float('inf')
 
-# V == 5일 때 1~5까지 노드가 있는거임.
 V, E = map(int, input().split())
 
 snode = int(input())   # 시작 노드
 
 graph = [[] for _ in range(V+1)]
-distance = [INF] * (V+1)   # 최단 거리 테이블
-# 연결 정보 입력
+distance = [INF] * (V+1)
+
 for _ in range(E):
     u, v, w = map(int, input().split())
     graph[u].append((v, w))
@@ -37,10 +37,8 @@ for _ in range(E):
 
 dijkstra(snode)
 
-# i번째 줄에 i번 정점으로의 최단 경로의 경로값을 출력
 for i in range(1,V+1):
     if distance[i] == INF:
         print("INF")
     else:
         print(distance[i])
-# pypy
