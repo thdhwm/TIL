@@ -70,8 +70,8 @@
 # for i in range(N):
 #     for j in range(N):
 #         if table[i][j] == 1:  # 육지
-#             for d in range(4):
-#                 ni, nj = i + di[d], j + dj[d]
+#             for k in range(4):
+#                 ni, nj = i + di[k], j + dj[k]
 #                 if 0 <= ni < N and 0 <= nj < N and table[ni][nj] == 0:
 #                     edges.add((i, j))
 #                     break
@@ -86,74 +86,67 @@ import sys
 sys.stdin = open('input.txt')
 
 
-N = int(input())
-table = [list(map(int, input().split())) for _ in range(N)]
-
-# 섬 라벨링
-parent = [[0] * N for _ in range(N)]
-island_id = 1
-di = [1, 0, -1, 0]
-dj = [0, 1, 0, -1]
-
-def bfs_label(i, j, island_id):
+def same_island(i, j, island_id):    # 섬 ID 라벨링 작업
     q = deque([(i, j)])
     parent[i][j] = island_id
     while q:
         ci, cj = q.popleft()
-        for d in range(4):
-            ni, nj = ci + di[d], cj + dj[d]
+        for k in range(4):
+            ni, nj = ci + di[k], cj + dj[k]
             if 0 <= ni < N and 0 <= nj < N and table[ni][nj] == 1 and parent[ni][nj] == 0:
                 parent[ni][nj] = island_id
                 q.append((ni, nj))
 
-for i in range(N):
-    for j in range(N):
-        if table[i][j] == 1 and parent[i][j] == 0:
-            bfs_label(i, j, island_id)
-            island_id += 1
 
-# 섬별 가장자리 시작점 수집 (중복 제거를 위해 set 사용)
-starts = [[] for _ in range(island_id)]
-for i in range(N):
-    for j in range(N):
-        if parent[i][j] > 0:
-            for d in range(4):
-                ni, nj = i + di[d], j + dj[d]
-                if 0 <= ni < N and 0 <= nj < N and table[ni][nj] == 0:
-                    starts[parent[i][j]].append((i, j))
-                    break  # 한 셀당 한 번만 추가 (중복 방지)
-
-# 다리 놓기 BFS (섬별로 한 번씩만)
-min_length = 1e9
-visited = [[False] * N for _ in range(N)]
-
-def bfs_bridge(starts_list, start_island):
+def bridge(starts_list, start_island):    # 가장 짧은 다리 찾기 bfs
     global min_length
     q = deque()
     for si, sj in starts_list:
-        q.append((si, sj, 0))
-        visited[si][sj] = True
+        q.append((si, sj, 0))     # ( i, j, 거리 )
+        visited[si][sj] = 1
 
     while q:
         ci, cj, dist = q.popleft()
-        if dist >= min_length:
+        if dist >= min_length:    # 거리 더 길어지면 바로 컨티뉴
             continue
 
-        for d in range(4):
-            ni, nj = ci + di[d], cj + dj[d]
+        for k in range(4):
+            ni, nj = ci + di[k], cj + dj[k]
             if 0 <= ni < N and 0 <= nj < N:
                 if not visited[ni][nj]:
-                    if parent[ni][nj] == 0:  # 바다
-                        visited[ni][nj] = True
+                    if parent[ni][nj] == 0:  # 아직 바다
+                        visited[ni][nj] = 1
                         q.append((ni, nj, dist + 1))
-                    elif parent[ni][nj] != start_island:  # 다른 섬
+                    elif parent[ni][nj] != start_island:  # 다른 섬 도착!
                         min_length = min(min_length, dist)
                         return
 
-# 각 섬에서 BFS 실행
-for iid in range(1, island_id):
-    # 방문 배열 초기화 (섬별로 새로 시작)
-    visited = [[False] * N for _ in range(N)]
-    bfs_bridge(starts[iid], iid)
 
-print(min_length if min_length != 1e9 else 0)
+N = int(input())
+table = [list(map(int, input().split())) for _ in range(N)]
+parent = [[0] * N for _ in range(N)]    # 각 섬을 구별하기 위한 리스트
+island_id = 1    # 각 섬을 구별하기 위한 ID 숫자
+min_length = 21e8
+di = [1, 0, -1, 0]
+dj = [0, 1, 0, -1]
+
+for i in range(N):       # 섬 ID 라벨링 작업
+    for j in range(N):
+        if table[i][j] == 1 and parent[i][j] == 0:
+            same_island(i, j, island_id)
+            island_id += 1
+
+starts = [set() for _ in range(island_id)]    # 섬별 가장자리 시작점 수집 ( set 으로 중복 제거 )
+for i in range(N):
+    for j in range(N):
+        if parent[i][j]:
+            for k in range(4):
+                ni, nj = i + di[k], j + dj[k]
+                if 0 <= ni < N and 0 <= nj < N and table[ni][nj] == 0:
+                    starts[parent[i][j]].add((i, j))
+
+for island in range(1, island_id):    # 각 섬에서 BFS
+    visited = [[0] * N for _ in range(N)]    # 섬별로 visited
+    bridge(starts[island], island)    # bfs 시작!
+
+print(min_length)
