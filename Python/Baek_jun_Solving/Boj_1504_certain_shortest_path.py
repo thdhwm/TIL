@@ -2,7 +2,7 @@ from heapq import heappop, heappush
 from collections import defaultdict
 import sys
 sys.stdin = open('input.txt')
-
+# 옛날에 풀엇던거 처럼 3번 다익스트라하기....
 
 def dijkstra(start):
     dists = [INF] * (N + 1)
